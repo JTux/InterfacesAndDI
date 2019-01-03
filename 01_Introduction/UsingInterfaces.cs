@@ -68,7 +68,7 @@ namespace _01_Introduction
         [TestMethod]
         public void InterfacesInCollections()
         {
-            var orange = new Orange { Peeled = true };
+            var orange = new Orange();
 
             //Collections can take in Interfaces as their type that they hold
             //This allows you to collect anything that implements that specific interface
@@ -109,6 +109,36 @@ namespace _01_Introduction
             var output = GetFruitName(grape);
 
             Console.WriteLine(output);
+        }
+
+        //Not directly related to interfaces but something you can do is utilize object types
+        //Here we have a list of IFruit objects and we want to iterate over them
+        //As we iterate over them we want to perform a different action for each type
+        [TestMethod]
+        public void TypeOfInstance()
+        {
+            var list = new List<IFruit>
+            {
+                new Orange{ Peeled=true },
+                new Orange(),
+                new Grape(),
+                new Orange(),
+                new Banana(),
+                new Grape()
+            };
+
+            Console.WriteLine("Is the orange peeled?");
+            foreach (var fruit in list)
+            {
+                //Here we use the keyword is to check if the fruit is a certain type
+                if (fruit is Orange)
+                    Console.WriteLine("Is an Orange");
+                //Here we use typeof to check the current fruit's type
+                else if (fruit.GetType() == typeof(Grape))
+                    Console.WriteLine("Is a Grape");
+                else
+                    Console.WriteLine("Is a Banana");
+            }
         }
     }
 }
