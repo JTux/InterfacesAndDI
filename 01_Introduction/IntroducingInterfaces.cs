@@ -50,7 +50,7 @@ namespace _01_Introduction
     }
 
     [TestClass]
-    public class UsingInterfaces
+    public class IntroducingInterfaces
     {
         [TestMethod]
         public void CallingInterfaceMethods()
