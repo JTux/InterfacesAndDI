@@ -34,12 +34,12 @@ namespace _02_DependencyInjection
     //This ElectronicPayment class implements the interface but does not have a fixed value
     public class ElectronicPayment : ICurrency
     {
-        private decimal _value;
-
         public ElectronicPayment(decimal value)
         {
             _value = value;
         }
+
+        private decimal _value;
 
         public string Name => "Electronic Payment";
         public decimal Value => _value;
@@ -67,6 +67,69 @@ namespace _02_DependencyInjection
             Pay(new ElectronicPayment(315.52m));
 
             Console.WriteLine($"Remaining debt is ${debt}.");
+        }
+
+        //In this class we are utilizing an interface inside of the Constructor
+        //This allows us to create a Transaction class regardless of the type of currency
+        //Note this is simply a way to see it being used I know it might seem redundant at this time
+        class Transaction
+        {
+            //We declare our field of type ICurrency
+            //This will be assigned a value when the class is constructed
+            private ICurrency _amount;
+
+            //We created a constructor that requires an ICurrency to be injected upon creation
+            public Transaction(ICurrency amount)
+            {
+                _amount = amount;
+                DateOfTransaction = DateTimeOffset.Now;
+            }
+
+            public DateTimeOffset DateOfTransaction { get; set; }
+
+            //These methods allow us to access the values without dealing with the ICurrency object
+            public decimal GetTransactionAmount() => _amount.Value;
+            public string GetTypeOfTransaction() => _amount.Name;
+        }
+
+        [TestMethod]
+        public void InjectingIntoConstructors()
+        {
+            //We declare our objects that implement ICurrency
+            var dollar = new Dollar();
+            var ePayment = new ElectronicPayment(243.71m);
+
+            //We pass them through into the new Transaction class
+            var firstTransaction = new Transaction(dollar);
+            var secondTransaction = new Transaction(ePayment);
+            
+            //We can now call the methods in the class we passed them into
+            //Now regardless of what was passed into the Transaction we can call the same methods
+            Console.WriteLine(firstTransaction.GetTypeOfTransaction());
+            Console.WriteLine(secondTransaction.GetTransactionAmount());
+        }
+
+        //Here's another quick example that shows a list of Transactions being made
+        //We can call the same method regardless of what has been passed into the constructor
+        [TestMethod]
+        public void MoreExamples()
+        {
+            var list = new List<Transaction>
+            {
+                new Transaction(new Dollar()),
+                new Transaction(new ElectronicPayment(231.95m)),
+                new Transaction(new Dime()),
+                new Transaction(new Dollar()),
+                new Transaction(new Penny())
+            };
+
+            foreach(var t in list)
+            {
+                var type = t.GetTypeOfTransaction();
+                var amount = t.GetTransactionAmount();
+
+                Console.WriteLine($"{type} ${amount} {t.DateOfTransaction}");
+            }
         }
     }
 }
