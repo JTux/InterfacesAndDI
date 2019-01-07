@@ -74,7 +74,7 @@ namespace _03_MockingExample_ConsoleApp
                     break;
                 }
                 else
-                    _console.WriteLine("Invalid input, please enter a number.");
+                    _console.Write("Invalid input, please enter a number: ");
             }
 
             _menuRepo.AddItem(newMeal);
@@ -153,7 +153,7 @@ namespace _03_MockingExample_ConsoleApp
                 if (int.TryParse(_console.ReadLine(), out int choice))
                     return choice;
                 else
-                    _console.WriteLine("Invalid input, please enter a number.");
+                    _console.Write("Invalid input, please enter a number: ");
             }
         }
     }
