@@ -20,7 +20,7 @@ namespace _03_MockingExample_Tests
 
         public void Clear()
         {
-            Output += "Called Clear Method";
+            Output += "Called Clear Method\n";
         }
 
         public ConsoleKeyInfo ReadKey()

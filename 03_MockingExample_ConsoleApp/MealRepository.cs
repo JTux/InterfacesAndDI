@@ -11,7 +11,11 @@ namespace _03_MockingExample_ConsoleApp
         private List<Meal> _menuList;
         public int itemCount = 0;
 
-        public MealRepository() => _menuList = new List<Meal>();
+        public MealRepository()
+        {
+            _menuList = new List<Meal>();
+            SeedMenu();
+        }
 
         public void AddItem(Meal newItem)
         {
@@ -27,5 +31,12 @@ namespace _03_MockingExample_ConsoleApp
         }
 
         public List<Meal> GetList() => _menuList;
+
+        private void SeedMenu()
+        {
+            AddItem(new Meal { MealName = "Cheese Burger", Description = "Burger with Cheese", Ingredients = "Bun, Patty, and Cheese", Price = 5m });
+            AddItem(new Meal { MealName = "Hamburger", Description = "Burger", Ingredients = "Bun with \"Beef\" Patty", Price = 4m });
+            AddItem(new Meal { MealName = "Fries", Description = "Fried Potato Strips", Ingredients = "Potatoes, Salt, and Happiness", Price = 2.99m });
+        }
     }
 }
