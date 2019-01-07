@@ -23,5 +23,21 @@ namespace _03_MockingExample_Tests
             //-- Assert
             Assert.IsTrue(console.Output.Contains("Potatoes, Salt, and Happiness"));
         }
+
+        [TestMethod]
+        public void MealRepository_AddToList_ShouldSeeItemInList()
+        {
+            //-- Arrange
+            var commandList = new List<string> { "1", "name", "description", "ingredients for test", "35.23", "2", "4" };
+            MockConsole console = new MockConsole(commandList);
+            var program = new ProgramUI(console);
+
+            //-- Act
+            program.Run();
+            Console.WriteLine(console.Output);
+
+            //-- Assert
+            Assert.IsTrue(console.Output.Contains("ingredients for test"));
+        }
     }
 }

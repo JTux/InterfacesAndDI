@@ -102,7 +102,7 @@ namespace _03_MockingExample_ConsoleApp
             var menu = _menuRepo.GetList();
 
             _console.Clear();
-            if (menu.Count == 0)
+            if (menu.Count != 0)
             {
                 var num = ParseIntput("Enter the menu item number you want to remove: ");
                 foreach (var item in menu)
@@ -148,6 +148,7 @@ namespace _03_MockingExample_ConsoleApp
 
         private int ParseIntput(string textInput)
         {
+            _console.WriteLine(textInput);
             while (true)
             {
                 if (int.TryParse(_console.ReadLine(), out int choice))
