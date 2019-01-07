@@ -87,6 +87,9 @@ namespace _01_Introduction
                 Console.WriteLine(fruit.Name);
                 Console.WriteLine(fruit.Peel());
 
+                //If you uncomment this method call you will see an error thrown
+                //This is because the IFruit interface does not have a Squeeze method
+                //This happens even though there is an Orange in the list that has a Squeeze method
                 //fruit.Squeeze();
             }
 
