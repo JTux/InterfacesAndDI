@@ -16,11 +16,11 @@ namespace _03_MockingExample_ConsoleApp
 
         public void Run()
         {
-            PrintMenu();
-            while (Menu()) { PrintMenu(); }
+            while (Menu());
         }
         public bool Menu()
         {
+            PrintMenu();
             int choice = ParseIntput(null);
 
             switch (choice)
@@ -120,8 +120,7 @@ namespace _03_MockingExample_ConsoleApp
                             foreach (var oldItem in menu)
                             {
                                 int spot = menu.IndexOf(oldItem);
-                                spot++;
-                                oldItem.MealNumber = spot;
+                                oldItem.MealNumber = ++spot;
                             }
                         }
                         else if (delResponse != "n")
@@ -131,11 +130,6 @@ namespace _03_MockingExample_ConsoleApp
                         }
                         break;
                     }
-                    else
-                    {
-                        _console.WriteLine("Invalid input, please enter the menu item ID number");
-                        _console.ReadKey();
-                    }
                 }
             }
             else
@@ -143,7 +137,6 @@ namespace _03_MockingExample_ConsoleApp
                 _console.WriteLine("The Menu is currently empty.");
                 _console.ReadKey();
             }
-
         }
 
         private int ParseIntput(string textInput)

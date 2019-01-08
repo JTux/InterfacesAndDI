@@ -39,5 +39,21 @@ namespace _03_MockingExample_Tests
             //-- Assert
             Assert.IsTrue(console.Output.Contains("ingredients for test"));
         }
+
+        [TestMethod]
+        public void MealRepository_RemoveFromList_ShouldNotSeeItem()
+        {
+            //-- Arrange
+            var commandList = new List<string> { "3", "1", "Y", "2", "4" };
+            MockConsole console = new MockConsole(commandList);
+            var program = new ProgramUI(console);
+
+            //-- Act
+            program.Run();
+            Console.WriteLine(console.Output);
+
+            //-- Assert
+            Assert.IsFalse(console.Output.Contains("Burger with Cheese"));
+        }
     }
 }
