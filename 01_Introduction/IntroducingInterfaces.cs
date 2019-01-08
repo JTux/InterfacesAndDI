@@ -135,7 +135,7 @@ namespace _01_Introduction
             {
                 //Here we use the keyword is to check if the fruit is a certain type
                 if (fruit is Orange)
-                    Console.WriteLine("Is an Orange");
+                    Console.WriteLine("Is a peeled Orange");
                 //Here we use typeof to check the current fruit's type
                 else if (fruit.GetType() == typeof(Grape))
                     Console.WriteLine("Is a Grape");
