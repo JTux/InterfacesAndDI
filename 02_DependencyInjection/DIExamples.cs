@@ -18,31 +18,55 @@ namespace _02_DependencyInjection
 
     public class Penny : ICurrency
     {
-        public string Name => "Penny";
-        public decimal Value => 0.01m;
+        public string Name
+        {
+            get { return "Penny"; }
+        }
+        public decimal Value
+        {
+            get { return 0.01m; }
+        }
     }
     public class Dime : ICurrency
     {
-        public string Name => "Dime";
-        public decimal Value => 0.10m;
+        public string Name
+        {
+            get { return "Dime"; }
+        }
+        public decimal Value
+        {
+            get { return 0.10m; }
+        }
     }
     public class Dollar : ICurrency
     {
-        public string Name => "Dollar";
-        public decimal Value => 1.00m;
+        public string Name
+        {
+            get { return "Dollar"; }
+        }
+        public decimal Value
+        {
+            get { return 1.00m; }
+        }
     }
     //This ElectronicPayment class implements the interface but does not have a fixed value
     public class ElectronicPayment : ICurrency
     {
+        public string Name
+        {
+            get { return "Electronic Payment"; }
+        }
+
+        private decimal _value;
+        public decimal Value
+        {
+            get { return _value; }
+        }
+
         public ElectronicPayment(decimal value)
         {
             _value = value;
         }
-
-        private decimal _value;
-
-        public string Name => "Electronic Payment";
-        public decimal Value => _value;
     }
 
     [TestClass]
@@ -88,8 +112,14 @@ namespace _02_DependencyInjection
             public DateTimeOffset DateOfTransaction { get; set; }
 
             //These methods allow us to access the values without dealing with the ICurrency object
-            public decimal GetTransactionAmount() => _amount.Value;
-            public string GetTypeOfTransaction() => _amount.Name;
+            public decimal GetTransactionAmount()
+            {
+                return _amount.Value;
+            }
+            public string GetTypeOfTransaction()
+            {
+                return _amount.Name;
+            }
         }
 
         [TestMethod]
@@ -102,7 +132,7 @@ namespace _02_DependencyInjection
             //We pass them through into the new Transaction class
             var firstTransaction = new Transaction(dollar);
             var secondTransaction = new Transaction(ePayment);
-            
+
             //We can now call the methods in the class we passed them into
             //Now regardless of what was passed into the Transaction we can call the same methods
             Console.WriteLine(firstTransaction.GetTypeOfTransaction());
@@ -123,7 +153,7 @@ namespace _02_DependencyInjection
                 new Transaction(new Penny())
             };
 
-            foreach(var t in list)
+            foreach (var t in list)
             {
                 var type = t.GetTypeOfTransaction();
                 var amount = t.GetTransactionAmount();

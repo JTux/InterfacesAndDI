@@ -19,7 +19,10 @@ namespace _01_Introduction
     //Here we implement our IFruit interface on a class
     public class Banana : IFruit
     {
-        public string Name { get => "Banana"; }
+        public string Name
+        {
+            get { return "Banana"; }
+        }
         public bool Peeled { get; set; }
         public string Peel()
         {
@@ -30,7 +33,10 @@ namespace _01_Introduction
 
     public class Orange : IFruit
     {
-        public string Name { get => "Orange"; }
+        public string Name
+        {
+            get { return "Orange"; }
+        }
         public bool Peeled { get; set; }
         public string Peel()
         {
@@ -39,14 +45,23 @@ namespace _01_Introduction
         }
 
         //Classes that implement the interface can still have their own unique methods and properties
-        public string Squeeze() => "You squeeze the orange and juice comes out.";
+        public string Squeeze()
+        {
+            return "You squeeze the orange and juice comes out.";
+        }
     }
 
     public class Grape : IFruit
     {
-        public string Name { get => "Grape"; }
+        public string Name
+        {
+            get { return "Grape"; }
+        }
         public bool Peeled { get; set; }
-        public string Peel() => "Who peels grapes?";
+        public string Peel()
+        {
+            return "Who peels grapes?";
+        }
     }
 
     [TestClass]
@@ -126,7 +141,7 @@ namespace _01_Introduction
                 new Orange(),
                 new Grape(),
                 new Orange(),
-                new Banana(),
+                new Banana{ Peeled=true },
                 new Grape()
             };
 
@@ -135,12 +150,17 @@ namespace _01_Introduction
             {
                 //Here we use the keyword is to check if the fruit is a certain type
                 if (fruit is Orange)
-                    Console.WriteLine("Is a peeled Orange");
+                    if (fruit.Peeled)
+                        Console.WriteLine("Is a peeled Orange.");
+                    else
+                        Console.WriteLine("Is an Orange.");
                 //Here we use typeof to check the current fruit's type
                 else if (fruit.GetType() == typeof(Grape))
-                    Console.WriteLine("Is a Grape");
+                    Console.WriteLine("Is a Grape.");
+                else if (fruit.Peeled)
+                    Console.WriteLine("Is a peeled Banana.");
                 else
-                    Console.WriteLine("Is a Banana");
+                    Console.WriteLine("Is a Banana.");
             }
         }
     }
