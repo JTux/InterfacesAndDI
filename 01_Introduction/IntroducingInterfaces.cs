@@ -135,7 +135,7 @@ namespace _01_Introduction
         [TestMethod]
         public void TypeOfInstance()
         {
-            var list = new List<IFruit>
+            var fruitSalad = new List<IFruit>
             {
                 new Orange{ Peeled=true },
                 new Orange(),
@@ -146,7 +146,7 @@ namespace _01_Introduction
             };
 
             Console.WriteLine("Is the orange peeled?");
-            foreach (var fruit in list)
+            foreach (var fruit in fruitSalad)
             {
                 //Here we use the keyword is to check if the fruit is a certain type
                 if (fruit is Orange)

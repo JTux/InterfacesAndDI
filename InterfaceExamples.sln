@@ -11,6 +11,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_MockingExample_Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_MockingExample_ConsoleApp", "03_MockingExample_ConsoleApp\03_MockingExample_ConsoleApp.csproj", "{27DE6B49-017F-4BCF-A1B4-1A415CE92299}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ServiceMocking_Services", "04_ServiceMocking_Services\04_ServiceMocking_Services.csproj", "{456BC73C-5B70-4B8B-8E0C-D7799D548F13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ServiceMocking_Models", "04_ServiceMocking_Models\04_ServiceMocking_Models.csproj", "{0FF546FC-C08B-4E1D-8352-47B351BC6656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ServiceMocking_Data", "04_ServiceMocking_Data\04_ServiceMocking_Data.csproj", "{CC8E2C04-BEBB-4895-9D39-38F3FB045EBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ServiceMocking_WebMVC", "04_ServiceMocking_WebMVC\04_ServiceMocking_WebMVC.csproj", "{2841605F-7521-4016-AC11-BB6F9E61F534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ServiceMocking_WebMVC.Tests", "04_ServiceMocking_WebMVC.Tests\04_ServiceMocking_WebMVC.Tests.csproj", "{63B3DA19-F400-4A76-A66A-7BA495A9E79D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +43,26 @@ Global
 		{27DE6B49-017F-4BCF-A1B4-1A415CE92299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27DE6B49-017F-4BCF-A1B4-1A415CE92299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27DE6B49-017F-4BCF-A1B4-1A415CE92299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456BC73C-5B70-4B8B-8E0C-D7799D548F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456BC73C-5B70-4B8B-8E0C-D7799D548F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456BC73C-5B70-4B8B-8E0C-D7799D548F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456BC73C-5B70-4B8B-8E0C-D7799D548F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF546FC-C08B-4E1D-8352-47B351BC6656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF546FC-C08B-4E1D-8352-47B351BC6656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF546FC-C08B-4E1D-8352-47B351BC6656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF546FC-C08B-4E1D-8352-47B351BC6656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8E2C04-BEBB-4895-9D39-38F3FB045EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8E2C04-BEBB-4895-9D39-38F3FB045EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8E2C04-BEBB-4895-9D39-38F3FB045EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC8E2C04-BEBB-4895-9D39-38F3FB045EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2841605F-7521-4016-AC11-BB6F9E61F534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2841605F-7521-4016-AC11-BB6F9E61F534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2841605F-7521-4016-AC11-BB6F9E61F534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2841605F-7521-4016-AC11-BB6F9E61F534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B3DA19-F400-4A76-A66A-7BA495A9E79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B3DA19-F400-4A76-A66A-7BA495A9E79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B3DA19-F400-4A76-A66A-7BA495A9E79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B3DA19-F400-4A76-A66A-7BA495A9E79D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

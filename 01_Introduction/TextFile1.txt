@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using _01_Dictionaries;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace _01_Dictionary_Tests
+{
+    [TestClass]
+    public class DictionaryTests
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            DictionaryWork dictWork = new DictionaryWork();
+        }
+
+        [TestMethod]
+        public void ChallengeTests()
+        {
+            //Arrange
+            DictionaryChallenge dC = new DictionaryChallenge();
+            Dictionary<int, List<int>> dictionary = dC.GetDictionary();
+
+            //Act
+            dictionary.Add(1, new List<int> { 3, 1, 4, 1, 5, 9, 2 });
+            dictionary.Add(2, new List<int> { 37, 42, 1338 });
+
+            var expected = 25;
+            var actual = dC.GetPairSum(1);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01_Dictionaries
+{
+    public class DictionaryChallenge
+    {
+        private Dictionary<int, List<int>> _dictionary = new Dictionary<int, List<int>>();
+
+        public Dictionary<int, List<int>> GetDictionary()
+        {
+            return _dictionary;
+        }
+
+        public int GetPairSum(int key)
+        {
+            int total = 0;
+            foreach (int value in _dictionary[key])
+            {
+                total += value;
+            }
+            return total;
+        }
+    }
+}
+P

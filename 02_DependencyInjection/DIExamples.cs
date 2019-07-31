@@ -57,15 +57,40 @@ namespace _02_DependencyInjection
             get { return "Electronic Payment"; }
         }
 
-        private decimal _value;
-        public decimal Value
-        {
-            get { return _value; }
-        }
+        public decimal Value { get; }
 
         public ElectronicPayment(decimal value)
         {
-            _value = value;
+            Value = value;
+        }
+    }
+
+    //In this class we are utilizing an interface inside of the Constructor
+    //This allows us to create a Transaction class regardless of the type of currency
+    //Note this is simply a way to see it being used I know it might seem redundant at this time
+    public class Transaction
+    {
+        //We declare our field of type ICurrency
+        //This will be assigned a value when the class is constructed
+        private ICurrency _amount;
+
+        //We created a constructor that requires an ICurrency to be injected upon creation
+        public Transaction(ICurrency amount)
+        {
+            _amount = amount;
+            DateOfTransaction = DateTimeOffset.Now;
+        }
+
+        public DateTimeOffset DateOfTransaction { get; set; }
+
+        //These methods allow us to access the values without dealing with the ICurrency object
+        public decimal GetTransactionAmount()
+        {
+            return _amount.Value;
+        }
+        public string GetTypeOfTransaction()
+        {
+            return _amount.Name;
         }
     }
 
@@ -75,51 +100,24 @@ namespace _02_DependencyInjection
         [TestMethod]
         public void DIMethodExample()
         {
-            decimal debt = 9000.01m;
-
-            //Here we have a method that allows a payment to be made
-            //The method is built to take any type of ICurrency and pay it towards the debt
-            //This way the method is not dependent on any specific type of currency
-            void Pay(ICurrency payment)
-            {
-                debt -= payment.Value;
-                Console.WriteLine($"You have paid ${payment.Value} towards your debt.");
-            }
+            _debt = 9000.01m;
 
             //Here we can inject any object that implements ICurrency
-            Pay(new Dollar());
-            Pay(new ElectronicPayment(315.52m));
+            PayDebt(new Dollar());
+            PayDebt(new ElectronicPayment(315.52m));
 
-            Console.WriteLine($"Remaining debt is ${debt}.");
+            Console.WriteLine($"Remaining debt is ${_debt}.");
         }
 
-        //In this class we are utilizing an interface inside of the Constructor
-        //This allows us to create a Transaction class regardless of the type of currency
-        //Note this is simply a way to see it being used I know it might seem redundant at this time
-        class Transaction
+        private decimal _debt;
+
+        //Here we have a method that allows a payment to be made
+        //The method is built to take any type of ICurrency and pay it towards the debt
+        //This way the method is not dependent on any specific type of currency
+        private void PayDebt(ICurrency payment)
         {
-            //We declare our field of type ICurrency
-            //This will be assigned a value when the class is constructed
-            private ICurrency _amount;
-
-            //We created a constructor that requires an ICurrency to be injected upon creation
-            public Transaction(ICurrency amount)
-            {
-                _amount = amount;
-                DateOfTransaction = DateTimeOffset.Now;
-            }
-
-            public DateTimeOffset DateOfTransaction { get; set; }
-
-            //These methods allow us to access the values without dealing with the ICurrency object
-            public decimal GetTransactionAmount()
-            {
-                return _amount.Value;
-            }
-            public string GetTypeOfTransaction()
-            {
-                return _amount.Name;
-            }
+            _debt -= payment.Value;
+            Console.WriteLine($"You have paid ${payment.Value} towards your debt.");
         }
 
         [TestMethod]

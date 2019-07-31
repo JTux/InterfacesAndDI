@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F30CFDD9-5C58-47DA-B4A1-47D83D1334FE}</ProjectGuid>
+    <ProjectGuid>{63B3DA19-F400-4A76-A66A-7BA495A9E79D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_01_Introduction</RootNamespace>
-    <AssemblyName>01_Introduction</AssemblyName>
+    <RootNamespace>_04_ServiceMocking_WebMVC.Tests</RootNamespace>
+    <AssemblyName>04_ServiceMocking_WebMVC.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,14 +49,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntroducingInterfaces.cs" />
+    <Compile Include="NoteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TextFile1.txt" />
+    <ProjectReference Include="..\04_ServiceMocking_Services\04_ServiceMocking_Services.csproj">
+      <Project>{456BC73C-5B70-4B8B-8E0C-D7799D548F13}</Project>
+      <Name>04_ServiceMocking_Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
