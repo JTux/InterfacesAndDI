@@ -72,7 +72,7 @@ namespace _02_DependencyInjection
     {
         //We declare our field of type ICurrency
         //This will be assigned a value when the class is constructed
-        private ICurrency _amount;
+        private readonly ICurrency _amount;
 
         //We created a constructor that requires an ICurrency to be injected upon creation
         public Transaction(ICurrency amount)
@@ -81,7 +81,7 @@ namespace _02_DependencyInjection
             DateOfTransaction = DateTimeOffset.Now;
         }
 
-        public DateTimeOffset DateOfTransaction { get; set; }
+        public DateTimeOffset DateOfTransaction { get; private set; }
 
         //These methods allow us to access the values without dealing with the ICurrency object
         public decimal GetTransactionAmount()
@@ -151,12 +151,12 @@ namespace _02_DependencyInjection
                 new Transaction(new Penny())
             };
 
-            foreach (var t in list)
+            foreach (var transaction in list)
             {
-                var type = t.GetTypeOfTransaction();
-                var amount = t.GetTransactionAmount();
+                var type = transaction.GetTypeOfTransaction();
+                var amount = transaction.GetTransactionAmount();
 
-                Console.WriteLine($"{type} ${amount} {t.DateOfTransaction}");
+                Console.WriteLine($"{type} ${amount} {transaction.DateOfTransaction}");
             }
         }
     }

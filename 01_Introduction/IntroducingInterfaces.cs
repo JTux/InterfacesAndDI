@@ -11,7 +11,7 @@ namespace _01_Introduction
         //We can give interfaces properties and methods
         //Note: they do not take access modifiers (public, private, etc.)
         string Name { get; }        //Property with only get
-        bool Peeled { get; set; }   //Property with get and set
+        bool Peeled { get; }        //Property with get and set
         string Peel();              //Method with return type
     }
 
@@ -19,11 +19,17 @@ namespace _01_Introduction
     //Here we implement our IFruit interface on a class
     public class Banana : IFruit
     {
+        public Banana() { }
+        public Banana(bool isPeeled)
+        {
+            Peeled = isPeeled;
+        }
+
         public string Name
         {
             get { return "Banana"; }
         }
-        public bool Peeled { get; set; }
+        public bool Peeled { get; private set; }
         public string Peel()
         {
             Peeled = true;
@@ -33,11 +39,17 @@ namespace _01_Introduction
 
     public class Orange : IFruit
     {
+        public Orange() { }
+        public Orange(bool isPeeled)
+        {
+            Peeled = isPeeled;
+        }
+
         public string Name
         {
             get { return "Orange"; }
         }
-        public bool Peeled { get; set; }
+        public bool Peeled { get; private set; }
         public string Peel()
         {
             Peeled = true;
@@ -57,7 +69,7 @@ namespace _01_Introduction
         {
             get { return "Grape"; }
         }
-        public bool Peeled { get; set; }
+        public bool Peeled { get; private set; }
         public string Peel()
         {
             return "Who peels grapes?";
@@ -137,11 +149,11 @@ namespace _01_Introduction
         {
             var fruitSalad = new List<IFruit>
             {
-                new Orange{ Peeled=true },
+                new Orange(true),
                 new Orange(),
                 new Grape(),
                 new Orange(),
-                new Banana{ Peeled=true },
+                new Banana(true),
                 new Grape()
             };
 
